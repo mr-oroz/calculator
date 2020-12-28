@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="vieport" content="width=device-width, initial-scale=1.0"> 
+        <link rel="stylesheet" href="style.css"> 
+    </head>
+    <title>calculator</title>
+    <body>
+        <div class="calculator">
+            <div class="output">
+                <div class="pre-operand"></div>
+                <div class="result">0</div>
+            </div>
+            <button class="btn" id="clear">AC</button>
+            <button id="delete">DEl</button>
+            <button value="/">÷</button>
+            <button value="7">7</button>
+            <button value="8">8</button>
+            <button value="9">9</button>
+            <button value="*">x</button>
+            <button value="4">4</button>
+            <button value="5">5</button>
+            <button value="6">6</button>
+            <button value="-">-</button>
+            <button value="1">1</button>
+            <button value="2">2</button>
+            <button value="3">3</button>
+            <button value="+">+</button>
+            <button value=".">.</button>
+            <button value="0">0</button>
+            <button class="btn" id="equal">=</button>
+        </div>
+
+        <script>
+
+            const display = document.querySelector(".pre-operand");
+            const buttons = document.querySelectorAll("button");
+            const result = document.querySelector(".result")
+            const equal = document.querySelector('#equal')
+            const del = document.querySelector('#delete');
+            const clear = document.querySelector('#clear');
+
+            buttons.forEach(item => {
+                item.addEventListener('click', () => {
+                    display.textContent += item.value;
+                })
+            });
+
+            equal.addEventListener ('click', () => {
+               if(display.textContent !== "") {
+                   result.textContent = eval(display.textContent); 
+                   display.textContent = "";
+               }
+            });
+
+            clear.addEventListener ("click", () =>{
+                display.textContent = "";
+                result.textContent = 0
+            });
+
+            del.addEventListener ('click', () =>{
+                display.textContent = display.textContent.slice(0,-1);
+            })
+        </script>
+
+    </body>
+</html>
